@@ -1,0 +1,65 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.eveningsamurai.symphony</groupId>
+  <artifactId>symphony</artifactId>
+  <packaging>jar</packaging>
+  <version>0.1</version>
+  <name>symphony</name>
+
+  <licenses>
+  	<license>
+  	  <name>Apache License, Version 2.0</name>
+  	  <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+  	  <distribution>repo</distribution>
+  	</license>
+  </licenses>
+  
+  <scm>
+  </scm>	
+
+  <dependencies>
+  		 <!--  JSON serialization/deserialization -->
+	    <dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.2.4</version>
+		</dependency>
+		
+		<!-- Logging -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.5</version>
+		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jcl-over-slf4j</artifactId>
+			<version>1.7.5</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>ch.qos.logback</groupId>
+			<artifactId>logback-classic</artifactId>
+			<version>1.0.13</version>
+			<scope>test</scope>
+		</dependency>
+		
+		<!-- Utility -->
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>18.0</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- Unit Tests -->
+		<dependency>
+			<groupId>org.testng</groupId>
+			<artifactId>testng</artifactId>
+			<version>6.8.8</version>
+			<scope>test</scope>
+		</dependency>
+  </dependencies>
+</project>
