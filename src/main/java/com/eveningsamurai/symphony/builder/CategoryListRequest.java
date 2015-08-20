@@ -33,6 +33,7 @@ public class CategoryListRequest extends Request {
 	 * Create a new request builder for client web property volume report
 	 * @param apiKey the api key to use to access the searchlight conductor api
 	 * @param sharedSecret the shared secret to use to access the searchlight conductor api
+	 * @param accountId the account id for which the category list is required
 	 **/
 	public CategoryListRequest(String apiKey, String sharedSecret, String accountId) {
 		super(apiKey, sharedSecret);

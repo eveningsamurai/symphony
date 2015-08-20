@@ -63,7 +63,6 @@ public class ClientWebPropertyVolumeRequest extends Request {
 	 * @param accountId account id for the account
 	 * @param webPropertyId the web property id for the tracked searches
 	 * @param rankSourceId the rank source id for the searches
-	 * @param timePeriodId set default "CURRENT"
 	 */
 	public ClientWebPropertyVolumeRequest(String apiKey, String sharedSecret, String accountId, String webPropertyId, String rankSourceId) {
 		this(apiKey, sharedSecret, accountId, webPropertyId, rankSourceId, "CURRENT");
