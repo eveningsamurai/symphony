@@ -50,7 +50,8 @@ public abstract class Request {
 	 * Constructor
 	 * 
 	 * Construct a new Request
-	 * @param accessToken: the access token to be used for the request
+	 * @param apiKey the api key to use to access the searchlight conductor api
+	 * @param sharedSecret the shared secret to use to access the searchlight conductor api
 	 */
 	public Request(String apiKey, String sharedSecret) {
 		this.apiKey = apiKey;
@@ -161,14 +162,14 @@ public abstract class Request {
 	/**
 	 * Send the request to the API with retry and exponential backoff
 	 * @return API response
-	 * @throws InterruptedException 
+	 * @throws InterruptedException thread put to sleep for exponential backoff
 	 */
 	public Response[] call() throws InterruptedException {
 		Response[] res = {};
 		int responseCode = 0;
 		Random randomGenerator = new Random();
 		
-		for(int n=0; n<5; n++) {
+		for(int n=0; n<6; n++) {
 			try {
 				String urlString = buildURL();
 				LOG.debug("Calling URL: {}", urlString);
@@ -189,9 +190,9 @@ public abstract class Request {
 				return res;
 			} catch (Exception e) {
 				if(responseCode == 403) {
-					int backOff = (1 << n) * 1000 + randomGenerator.nextInt(1001); 
-					LOG.debug("Sleeping for: {}", backOff);
-					Thread.sleep(backOff);
+					int backOffTime = (1 << n) * 1000 + randomGenerator.nextInt(1001); 
+					LOG.debug("Sleeping for: {}", backOffTime);
+					Thread.sleep(backOffTime);
 				}
 				else
 					throw new SymphonyClientException(e);
