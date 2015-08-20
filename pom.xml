@@ -4,7 +4,7 @@
   <groupId>com.eveningsamurai</groupId>
   <artifactId>symphony</artifactId>
   <packaging>jar</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   
   <name>Symphony</name>
   <description>Unofficial Java wrapper for the Searchlight Conductor API</description>
@@ -22,7 +22,7 @@
     <developer>
       <name>Avinash Padmanabhan</name>
       <email>avinashpadmanabhan@gmail.com</email>
-      <organization></organization>
+      <organization />
       <organizationUrl>http://eveningsamurai.wordpress.com</organizationUrl>
     </developer>
   </developers>
@@ -31,6 +31,7 @@
     <connection>scm:git:git@github.com:eveningsamurai/symphony.git</connection>
     <developerConnection>scm:git:git@github.com:eveningsamurai/symphony.git</developerConnection>
     <url>git@github.com:eveningsamurai/symphony.git</url>
+    <tag>symphony-0.1</tag>
   </scm>	
 
   <dependencies>
@@ -82,10 +83,10 @@
 		 <id>nexus-snapshots</id>
 		 <url>https://oss.sonatype.org/content/repositories/snapshots</url>
 	  </snapshotRepository>
-	  <snapshotRepository>
+	  <repository>
 		 <id>nexus-releases</id>
 		 <url>http://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-	  </snapshotRepository>
+	  </repository>
 	</distributionManagement>
   
   <build>
