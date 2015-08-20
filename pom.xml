@@ -31,7 +31,6 @@
     <connection>scm:git:git@github.com:eveningsamurai/symphony.git</connection>
     <developerConnection>scm:git:git@github.com:eveningsamurai/symphony.git</developerConnection>
     <url>git@github.com:eveningsamurai/symphony.git</url>
-    <tag>symphony-0.1</tag>
   </scm>	
 
   <dependencies>
