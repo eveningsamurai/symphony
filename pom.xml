@@ -9,11 +9,7 @@
   <name>Symphony</name>
   <description>Unofficial Java wrapper for the Searchlight Conductor API</description>
   <url>https://github.com/eveningsamurai/symphony</url>
-<parent>
-    <groupId>org.sonatype.oss</groupId>
-    <artifactId>oss-parent</artifactId>
-    <version>7</version>
-</parent>
+
   <licenses>
   	<license>
   	  <name>Apache License, Version 2.0</name>
@@ -94,7 +90,7 @@
 	  </snapshotRepository>
 	  <repository>
 		 <id>nexus-releases</id>
-		 <url>http://oss.sonatype.org/service/local/staging/deploy/maven2</url>
+		 <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 	  </repository>
 	</distributionManagement>
   
