@@ -4,7 +4,7 @@
   <groupId>com.eveningsamurai</groupId>
   <artifactId>symphony</artifactId>
   <packaging>jar</packaging>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   
   <name>Symphony</name>
   <description>Unofficial Java wrapper for the Searchlight Conductor API</description>
@@ -31,15 +31,10 @@
     <connection>scm:git:git@github.com:eveningsamurai/symphony.git</connection>
     <developerConnection>scm:git:git@github.com:eveningsamurai/symphony.git</developerConnection>
     <url>git@github.com:eveningsamurai/symphony.git</url>
+    <tag>v0.1</tag>
   </scm>	
 
   <dependencies>
-	  <dependency>
-		 <groupId>org.apache.maven.plugins</groupId>
-		 <artifactId>maven-release-plugin</artifactId>
-		 <version>2.5.2</version>
-		</dependency>
-
   		 <!--  JSON serialization/deserialization -->
 	    <dependency>
 			<groupId>com.google.code.gson</groupId>
