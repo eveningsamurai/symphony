@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.eveningsamurai.symphony</groupId>
   <artifactId>symphony</artifactId>
-  <version>0.1-SNAPSHOT</version>
+  <version>0.1</version>
   <packaging>jar</packaging>
   
   <name>Symphony</name>
@@ -34,6 +32,7 @@
     <connection>scm:git:git@github.com:eveningsamurai/symphony.git</connection>
     <developerConnection>scm:git:git@github.com:eveningsamurai/symphony.git</developerConnection>
     <url>git@github.com:eveningsamurai/symphony.git</url>
+    <tag>symphony-0.1</tag>
   </scm>	
 
   <dependencies>
@@ -63,6 +62,38 @@
 		 <url>https://oss.sonatype.org/service/local/staging/deploy/maven2</url>
 	  </repository>
 	</distributionManagement>
+
+	<profiles>
+		<profile>
+			<id>release-sign-artifacts</id>
+			<activation>
+				<property>
+					<name>performRelease</name>
+					<value>true</value>
+				</property>
+			</activation>
+			<build>
+			  <plugin>
+				 <groupId>org.apache.maven.plugins</groupId>
+				 <artifactId>maven-gpg-plugin</artifactId>
+				 <version>1.4</version>
+				 <executions>
+					<execution>
+					  <id>sign-artifacts</id>
+					  <phase>verify</phase>
+					  <goals>
+						 <goal>sign</goal>
+					  </goals>
+					</execution>
+				 </executions>
+				 <configuration>
+					 <keyname>75C56291</keyname>
+				 </configuration>
+			  </plugin>
+		  </build>
+	  </profile>
+	</profiles>
+
   
   <build>
     <plugins>
@@ -92,23 +123,6 @@
           </execution>
         </executions>
       </plugin>	
-	  <plugin>
-		 <groupId>org.apache.maven.plugins</groupId>
-		 <artifactId>maven-gpg-plugin</artifactId>
-		 <version>1.4</version>
-		 <executions>
-			<execution>
-			  <id>sign-artifacts</id>
-			  <phase>verify</phase>
-			  <goals>
-				 <goal>sign</goal>
-			  </goals>
-			</execution>
-		 </executions>
-		 <configuration>
-			 <keyname>75C56291</keyname>
-		 </configuration>
-	  </plugin>
 	  <plugin>
 		 <groupId>org.apache.maven.plugins</groupId>
 		 <artifactId>maven-compiler-plugin</artifactId>
