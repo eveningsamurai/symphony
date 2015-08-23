@@ -72,6 +72,7 @@
 				</property>
 			</activation>
 			<build>
+				<plugins>
 			  <plugin>
 				 <groupId>org.apache.maven.plugins</groupId>
 				 <artifactId>maven-gpg-plugin</artifactId>
@@ -89,6 +90,7 @@
 					 <keyname>75C56291</keyname>
 				 </configuration>
 			  </plugin>
+		  </plugins>
 		  </build>
 	  </profile>
 	</profiles>
