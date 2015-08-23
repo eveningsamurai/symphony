@@ -29,9 +29,9 @@
   </developers>
   
   <scm>
-    <connection>scm:git:git@github.com:eveningsamurai/symphony.git</connection>
-    <developerConnection>scm:git:git@github.com:eveningsamurai/symphony.git</developerConnection>
-	 <url>https://github.com/eveningsamurai/symphony.git</url>
+     <connection>scm:git:https://github.com/eveningsamurai/symphony.git</connection>
+     <developerConnection>scm:git:https://github.com/eveningsamurai/symphony.git</developerConnection>
+    <url>https://github.com/eveningsamurai/symphony.git</url>
   </scm>	
 
   <dependencies>
