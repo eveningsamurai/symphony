@@ -105,6 +105,9 @@
 			  </goals>
 			</execution>
 		 </executions>
+		 <configuration>
+			 <keyname>75C56291</keyname>
+		 </configuration>
 	  </plugin>
 	  <plugin>
 		 <groupId>org.apache.maven.plugins</groupId>
