@@ -4,7 +4,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.eveningsamurai.symphony</groupId>
   <artifactId>symphony</artifactId>
-  <version>0.2.3-SNAPSHOT</version>
+  <version>0.2.3</version>
   <packaging>jar</packaging>
   
   <name>Symphony</name>
@@ -32,6 +32,7 @@
      <connection>scm:git:https://github.com/eveningsamurai/symphony.git</connection>
      <developerConnection>scm:git:https://github.com/eveningsamurai/symphony.git</developerConnection>
     <url>https://github.com/eveningsamurai/symphony.git</url>
+    <tag>v0.2.3</tag>
   </scm>	
 
   <dependencies>
