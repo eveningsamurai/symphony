@@ -1,0 +1,174 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Symphony by eveningsamurai</title>
+
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/github-light.css">
+    <script src="javascripts/scale.fix.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <!--[if lt IE 9]>
+    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <div class="wrapper">
+      <header>
+        <h1 class="header">Symphony</h1>
+        <p class="header">An unofficial Java wrapper for the Conductor SearchLight APIs</p>
+
+        <ul>
+          <li class="download"><a class="buttons" href="https://github.com/eveningsamurai/symphony/zipball/master">Download ZIP</a></li>
+          <li class="download"><a class="buttons" href="https://github.com/eveningsamurai/symphony/tarball/master">Download TAR</a></li>
+          <li><a class="buttons github" href="https://github.com/eveningsamurai/symphony">View On GitHub</a></li>
+        </ul>
+
+        <p class="header">This project is maintained by <a class="header name" href="https://github.com/eveningsamurai">eveningsamurai</a></p>
+
+
+      </header>
+      <section>
+        <h1>
+<a id="symphony" class="anchor" href="#symphony" aria-hidden="true"><span class="octicon octicon-link"></span></a>symphony</h1>
+
+<p>An unofficial Java wrapper for the SearchLight Conductor APIs: <a href="http://developers.conductor.com/docs">http://developers.conductor.com/docs</a></p>
+
+<h3>
+<a id="adding-symphony-to-your-project" class="anchor" href="#adding-symphony-to-your-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>adding symphony to your project</h3>
+
+<p>symphony is hosted on <a href="http://search.maven.org/#artifactdetails%7Ccom.eveningsamurai.symphony%7Csymphony%7C0.2.4%7Cjar" target="_blank">maven central</a></p>
+
+<h4>
+<a id="apache-maven" class="anchor" href="#apache-maven" aria-hidden="true"><span class="octicon octicon-link"></span></a>apache maven</h4>
+
+<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">dependency</span>&gt;
+    &lt;<span class="pl-ent">groupId</span>&gt;com.eveningsamurai.symphony&lt;/<span class="pl-ent">groupId</span>&gt;
+    &lt;<span class="pl-ent">artifactId</span>&gt;symphony&lt;/<span class="pl-ent">artifactId</span>&gt;
+    &lt;<span class="pl-ent">version</span>&gt;0.2.4&lt;/<span class="pl-ent">version</span>&gt;
+&lt;/<span class="pl-ent">dependency</span>&gt;</pre></div>
+
+<h4>
+<a id="apache-buildr" class="anchor" href="#apache-buildr" aria-hidden="true"><span class="octicon octicon-link"></span></a>apache buildr</h4>
+
+<p>'com.eveningsamurai.symphony:symphony:jar:0.2.4'</p>
+
+<h4>
+<a id="apache-ivy" class="anchor" href="#apache-ivy" aria-hidden="true"><span class="octicon octicon-link"></span></a>apache ivy</h4>
+
+<div class="highlight highlight-xml"><pre>&lt;<span class="pl-ent">dependency</span> <span class="pl-e">org</span>=<span class="pl-s"><span class="pl-pds">"</span>com.eveningsamurai.symphony<span class="pl-pds">"</span></span> <span class="pl-e">name</span>=<span class="pl-s"><span class="pl-pds">"</span>symphony<span class="pl-pds">"</span></span> <span class="pl-e">rev</span>=<span class="pl-s"><span class="pl-pds">"</span>0.2.4<span class="pl-pds">"</span></span> /&gt;</pre></div>
+
+<h4>
+<a id="gradle" class="anchor" href="#gradle" aria-hidden="true"><span class="octicon octicon-link"></span></a>gradle</h4>
+
+<p>compile 'com.eveningsamurai.symphony:symphony:0.2.4'</p>
+
+<h3>
+<a id="third-party-dependencies" class="anchor" href="#third-party-dependencies" aria-hidden="true"><span class="octicon octicon-link"></span></a>third party dependencies</h3>
+
+<p>symphony is a fat jar and contains the following dependencies</p>
+
+<ul>
+<li>gson</li>
+<li>guava</li>
+</ul>
+
+<h2>
+<a id="usage-examples" class="anchor" href="#usage-examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>usage examples</h2>
+
+<h3>
+<a id="initialization" class="anchor" href="#initialization" aria-hidden="true"><span class="octicon octicon-link"></span></a>initialization</h3>
+
+<div class="highlight highlight-java"><pre><span class="pl-c">//access to the searchlight conductor requires an api key and a shared secret</span>
+<span class="pl-smi">SymphonyClient</span> client <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">SymphonyClient</span>(apiKey, sharedSecret);</pre></div>
+
+<h4>
+<a id="fetching-account-details" class="anchor" href="#fetching-account-details" aria-hidden="true"><span class="octicon octicon-link"></span></a>fetching account details</h4>
+
+<div class="highlight highlight-java"><pre><span class="pl-c">//fetch the account associated with the api key and shared secret</span>
+<span class="pl-smi">AccountRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>accountInfo();
+<span class="pl-k">AccountResponse</span>[] res <span class="pl-k">=</span> (<span class="pl-k">AccountResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Account Id: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getAccountId());</pre></div>
+
+<h4>
+<a id="fetching-the-rank-source-device-location-or-category-data" class="anchor" href="#fetching-the-rank-source-device-location-or-category-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>fetching the rank source, device, location or category data</h4>
+
+<div class="highlight highlight-java"><pre><span class="pl-c">//list of rank sources that the tracked searches will be associated with</span>
+<span class="pl-smi">RankSourceListRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>rankSourceList();
+<span class="pl-k">RankSourceListResponse</span>[] list <span class="pl-k">=</span> (<span class="pl-k">RankSourceListResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Rank Source Description: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> list[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getDescription());
+
+<span class="pl-c">//list of devices that the searches are tracked against</span>
+<span class="pl-smi">DeviceListRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>deviceList();
+<span class="pl-k">DeviceListResponse</span>[] list <span class="pl-k">=</span> (<span class="pl-k">DeviceListResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Device List Description<span class="pl-pds">"</span></span> <span class="pl-k">+</span> list[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getDescription());
+
+<span class="pl-c">//list of locations used to identify the search origination </span>
+<span class="pl-smi">LocationListRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>locationList();
+<span class="pl-k">LocationListResponse</span>[] list <span class="pl-k">=</span> (<span class="pl-k">LocationListResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Location List Description<span class="pl-pds">"</span></span> <span class="pl-k">+</span> list[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getDescription());
+
+<span class="pl-c">//list of categories associated with each tracked search id</span>
+<span class="pl-smi">CategoryListRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>categoryList(<span class="pl-s"><span class="pl-pds">"</span>MY_ACCOUNT_ID<span class="pl-pds">"</span></span>);
+<span class="pl-k">CategoryListResponse</span>[] res <span class="pl-k">=</span> (<span class="pl-k">CategoryListResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Cateogory Name: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getName());</pre></div>
+
+<h4>
+<a id="getting-the-list-of-web-properties-associated-with-the-account" class="anchor" href="#getting-the-list-of-web-properties-associated-with-the-account" aria-hidden="true"><span class="octicon octicon-link"></span></a>getting the list of web properties associated with the account</h4>
+
+<div class="highlight highlight-java"><pre><span class="pl-c">//list of web properties for the account</span>
+<span class="pl-smi">WebPropertyListRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>webProperties(<span class="pl-s"><span class="pl-pds">"</span>MY_ACCOUNT_ID<span class="pl-pds">"</span></span>);
+<span class="pl-k">WebPropertyListResponse</span>[] res <span class="pl-k">=</span> (<span class="pl-k">WebPropertyListResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Web Property URL: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getName());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Search Engine Id: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getRankSourceInfo()[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getRankSourceId());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Comparison Web Property Name: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getRankSourceInfo()[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getComparisonWebProperties()[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getName());</pre></div>
+
+<h4>
+<a id="getting-tracked-search-data" class="anchor" href="#getting-tracked-search-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>getting tracked search data</h4>
+
+<div class="highlight highlight-java"><pre><span class="pl-c">//returns a list of all client web properties for the given account</span>
+<span class="pl-smi">SymphonyClient</span> client <span class="pl-k">=</span> <span class="pl-k">new</span> <span class="pl-smi">SymphonyClient</span>(apiKey, sharedSecret);
+<span class="pl-smi">TrackedSearchListRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>trackedSearches(<span class="pl-s"><span class="pl-pds">"</span>MY_ACCOUNT_ID<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>MY_WEB_PROPERTY_ID<span class="pl-pds">"</span></span>);
+<span class="pl-k">TrackedSearchListResponse</span>[] res <span class="pl-k">=</span> (<span class="pl-k">TrackedSearchListResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Tracked Search Id<span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getTrackedSearchId());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Query Phrase<span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getQueryPhrase());</pre></div>
+
+<h4>
+<a id="getting-web-property-rank-data" class="anchor" href="#getting-web-property-rank-data" aria-hidden="true"><span class="octicon octicon-link"></span></a>getting web property rank data</h4>
+
+<div class="highlight highlight-java"><pre><span class="pl-c">//report of all the result items of interest seen for all tracked searches on a particular client web property when measured against a particular rank source</span>
+<span class="pl-smi">ClientWebPropertyRankRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>webPropertyRanks(<span class="pl-s"><span class="pl-pds">"</span>MY_ACCOUNT_ID<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>MY_WEB_PROPERTY_ID<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>MY_RANK_SOURCE_ID<span class="pl-pds">"</span></span>);
+<span class="pl-k">ClientWebPropertyRankResponse</span>[] res <span class="pl-k">=</span> (<span class="pl-k">ClientWebPropertyRankResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Item Type: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getItemType());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Search result URL: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getTargetUrl());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Universal Rank: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getRanks()<span class="pl-k">.</span>getUniversalRank());</pre></div>
+
+<h4>
+<a id="getting-search-volume-information" class="anchor" href="#getting-search-volume-information" aria-hidden="true"><span class="octicon octicon-link"></span></a>getting search volume information</h4>
+
+<div class="highlight highlight-java"><pre><span class="pl-c">//report of monthly volumes seen for all tracked searches on  a particular client web property when measured against a particular rank source</span>
+<span class="pl-smi">ClientWebPropertyVolumeRequest</span> req <span class="pl-k">=</span> client<span class="pl-k">.</span>webPropertyVolume(<span class="pl-s"><span class="pl-pds">"</span>MY_ACCOUNT_ID<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>MY_WEB_PROPERTY_ID<span class="pl-pds">"</span></span>, <span class="pl-s"><span class="pl-pds">"</span>MY_RANK_SOURCE_ID<span class="pl-pds">"</span></span>);
+<span class="pl-k">ClientWebPropertyVolumeResponse</span>[] res <span class="pl-k">=</span> (<span class="pl-k">ClientWebPropertyVolumeResponse</span>[]) req<span class="pl-k">.</span>call();
+
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Tracked Search Id: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getTrackedSearchId());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Average volume of the tracked search id: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getAverageVolume());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Month: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getVolumeItems()[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getMonth());
+<span class="pl-smi">System</span><span class="pl-k">.</span>out<span class="pl-k">.</span>println(<span class="pl-s"><span class="pl-pds">"</span>Volume for month: <span class="pl-pds">"</span></span> <span class="pl-k">+</span> res[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getVolumeItems()[<span class="pl-c1">0</span>]<span class="pl-k">.</span>getVolume());</pre></div>
+      </section>
+      <footer>
+        <p><small>Hosted on <a href="https://pages.github.com">GitHub Pages</a> using the Dinky theme</small></p>
+      </footer>
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+		
+  </body>
+</html>
